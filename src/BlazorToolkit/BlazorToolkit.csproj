@@ -4,7 +4,26 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <PackageId>Yu-Core.BlazorToolkit</PackageId>
+    <Authors>Yu-Core</Authors>
+    <Description>The Blazor toolkit encapsulates some Blazor tool classes, such as obtaining system themes and monitoring changes.</Description>
+    <PackageProjectUrl>https://github.com/Yu-Core/BlazorToolkit</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/Yu-Core/BlazorToolkit</RepositoryUrl>
+    <PackageTags>Blazor;Toolkit</PackageTags>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 
   <ItemGroup>

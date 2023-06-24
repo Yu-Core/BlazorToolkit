@@ -5,6 +5,7 @@ English || [¼òÌåÖÐÎÄ](/README.zh-CN.md)
 The Blazor toolkit encapsulates some Blazor tool classes, such as obtaining system themes and monitoring changes.
 
 ## Start
+Install [Yu-Core.BlazorToolkit](https://www.nuget.org/packages/Yu-Core.BlazorToolkit) from NuGet
 
 To use the MauiBlazor toolkit, you need to add it to the root layout file, such as' MainLayout. razor '
 
