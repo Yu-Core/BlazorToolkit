@@ -1,0 +1,27 @@
+﻿@page "/"
+@using BlazorToolkit.Essentials
+
+<PageTitle>Theme</PageTitle>
+
+@("CurrentTheme:" + SystemTheme.ToString())
+
+@code{
+    private AppTheme SystemTheme;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            SystemTheme = await Theme.Default.GetThemeAsync();
+            Theme.Default.SystemThemeChanged += ThemeChanged;
+            await InvokeAsync(StateHasChanged);
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    public void ThemeChanged(AppTheme value)
+    {
+        SystemTheme = value;
+        StateHasChanged();
+    }
+}
