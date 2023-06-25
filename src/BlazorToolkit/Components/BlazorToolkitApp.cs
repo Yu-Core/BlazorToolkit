@@ -14,6 +14,7 @@ namespace BlazorToolkit
             {
                 await Theme.InitializeAsync(JS);
                 await Language.InitializeAsync(JS);
+                Browser.InitializeAsync(JS);
             }
             await base.OnAfterRenderAsync(firstRender);
         }

@@ -1,0 +1,13 @@
+﻿@page "/browser"
+@using BlazorToolkit.Essentials
+
+<PageTitle>Browser</PageTitle>
+
+<button @onclick="OpenNewWindow">OpenNewWindow</button>
+
+@code{
+    private Task OpenNewWindow()
+    {
+        return Browser.Default.OpenAsync("https://www.baidu.com");
+    }
+}
