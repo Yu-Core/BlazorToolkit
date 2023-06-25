@@ -1,0 +1,27 @@
+﻿@page "/language"
+@using BlazorToolkit.Essentials
+
+<PageTitle>Language</PageTitle>
+
+@("CurrentLanguage:" + BrowserLanguage)
+
+@code{
+    private string? BrowserLanguage;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            BrowserLanguage = await Language.Default.GetBrowserLanguageAsync();
+            Language.Default.BrowserLanguageChanged += LanguageChanged;
+            await InvokeAsync(StateHasChanged);
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    public void LanguageChanged(string value)
+    {
+        BrowserLanguage = value;
+        StateHasChanged();
+    }
+}

@@ -25,7 +25,6 @@
     </None>
   </ItemGroup>
 
-
   <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>

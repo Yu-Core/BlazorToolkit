@@ -13,6 +13,7 @@ namespace BlazorToolkit
             if(firstRender)
             {
                 await Theme.InitializeAsync(JS);
+                await Language.InitializeAsync(JS);
             }
             await base.OnAfterRenderAsync(firstRender);
         }
