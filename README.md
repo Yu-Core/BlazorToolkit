@@ -16,12 +16,27 @@ To use the MauiBlazor toolkit, you need to add it to the root layout file, such 
 ```
 
 ## Theme
-#### Obtain the current system theme
+#### Get the current system theme
 ```
-AppTheme SystemTheme=await Theme. Default. GetThemeAsync();
+AppTheme SystemTheme = await Theme.Default.GetThemeAsync();
+```
+#### Listening system theme change
+```
+Theme.Default.SystemThemeChanged += ThemeChanged;
 ```
 
-#### Monitoring system theme change
+## Language
+#### Get the current browser language
 ```
-Theme. Default. SystemThemeChanged+=ThemeChanged;
+BrowserLanguage = await Language.Default.GetBrowserLanguageAsync();
+```
+#### Listening for browser language changes
+```
+Language.Default.BrowserLanguageChanged += LanguageChanged;
+```
+
+## Browser
+#### Open a new window
+```
+Browser.Default.OpenAsync("https://www.baidu.com");
 ```

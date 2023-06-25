@@ -20,8 +20,23 @@ Blazor 工具箱，封装了一些 Blazor 的工具类，例如系统主题的获取与监听改变。
 ```
 AppTheme SystemTheme = await Theme.Default.GetThemeAsync();
 ```
-
 #### 监听系统主题更改
 ```
 Theme.Default.SystemThemeChanged += ThemeChanged;
+```
+
+## Language(语言)
+#### 获取当前浏览器语言
+```
+BrowserLanguage = await Language.Default.GetBrowserLanguageAsync();
+```
+#### 监听浏览器语言改变
+```
+Language.Default.BrowserLanguageChanged += LanguageChanged;
+```
+
+## Browser(浏览器)
+#### 打开新窗口
+```
+Browser.Default.OpenAsync("https://www.baidu.com");
 ```
