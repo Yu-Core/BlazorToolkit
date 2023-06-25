@@ -9,17 +9,17 @@ namespace BlazorToolkit.Essentials
         public static ITheme Default => defaultImplementation.Value;
 
         public static event Action<AppTheme>? SystemThemeChanged;
-        public static Task<AppTheme> GetThemeAsync() 
-            => Default.GetThemeAsync();
+        public static Task<AppTheme> GetSystemThemeAsync() 
+            => Default.GetSystemThemeAsync();
 
         internal static async Task InitializeAsync(IJSRuntime jSRuntime)
         {
             defaultImplementation = new(new ThemeImplementation(jSRuntime));
-            Default.SystemThemeChanged += SystemThemeChange;
+            Default.SystemThemeChanged += NotifyChanged;
             await Default.AddListent();
         }
 
-        private static void SystemThemeChange(AppTheme value)
+        private static void NotifyChanged(AppTheme value)
         {
             SystemThemeChanged?.Invoke(value);
         }

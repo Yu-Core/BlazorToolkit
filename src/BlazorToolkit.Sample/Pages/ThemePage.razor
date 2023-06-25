@@ -12,7 +12,7 @@
     {
         if(firstRender)
         {
-            SystemTheme = await Theme.Default.GetThemeAsync();
+            SystemTheme = await Theme.Default.GetSystemThemeAsync();
             Theme.Default.SystemThemeChanged += ThemeChanged;
             await InvokeAsync(StateHasChanged);
         }
