@@ -4,5 +4,9 @@ export function followBrowserLanguage(dotNet, callbackMethod) {
     });
 }
 export function getBrowserLanguage() {
-    return (navigator.language || navigator.browserLanguage).toLowerCase();
+    var language = navigator.language || navigator.browserLanguage;
+    if (language.indexOf('-') !== -1) {
+        language = language.split('-')[0] + '-' + language.split('-')[1].toUpperCase();
+    }
+    return language;
 }
