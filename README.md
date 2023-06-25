@@ -1,6 +1,6 @@
 # BlazorToolkit
 
-English || [¼òÌåÖÐÎÄ](/README.zh-CN.md)
+English || [ç®€ä½“ä¸­æ–‡](/README.zh-CN.md)
 
 The Blazor toolkit encapsulates some Blazor tool classes, such as obtaining system themes and monitoring changes.
 
