@@ -5,10 +5,9 @@ namespace BlazorToolkit.Essentials
     public static class Language
     {
         static Lazy<ILanguage> defaultImplementation = default!;
-
         public static ILanguage Default => defaultImplementation.Value;
-
         public static event Action<string>? BrowserLanguageChanged;
+
         public static Task<string> GetBrowserLanguageAsync() 
             => Default.GetBrowserLanguageAsync();
 
