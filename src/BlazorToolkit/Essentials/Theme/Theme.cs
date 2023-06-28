@@ -4,7 +4,7 @@ namespace BlazorToolkit.Essentials
 {
     public static class Theme
     {
-        static Lazy<ITheme> defaultImplementation = default!;
+        static readonly Lazy<ITheme> defaultImplementation = new(new ThemeImplementation());
 
         public static ITheme Default => defaultImplementation.Value;
 
@@ -14,9 +14,8 @@ namespace BlazorToolkit.Essentials
 
         internal static async Task InitializeAsync(IJSRuntime jSRuntime)
         {
-            defaultImplementation = new(new ThemeImplementation(jSRuntime));
+            await Default.InitializeAsync(jSRuntime);
             Default.SystemThemeChanged += NotifyChanged;
-            await Default.AddListent();
         }
 
         private static void NotifyChanged(AppTheme value)

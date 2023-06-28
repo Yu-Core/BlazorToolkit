@@ -1,9 +1,11 @@
-﻿namespace BlazorToolkit.Essentials
+﻿using Microsoft.JSInterop;
+
+namespace BlazorToolkit.Essentials
 {
     public interface ILanguage
     {
         event Action<string>? BrowserLanguageChanged;
         Task<string> GetBrowserLanguageAsync();
-        Task AddListent();
+        internal Task InitializeAsync(IJSRuntime jSRuntime);
     }
 }

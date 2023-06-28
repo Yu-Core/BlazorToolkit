@@ -4,12 +4,8 @@ namespace BlazorToolkit.Essentials
 {
     public class ThemeImplementation : ITheme
     {
-        private readonly JSBinder _jsBinder = default!;
+        private JSBinder _jsBinder = default!;
         public event Action<AppTheme>? SystemThemeChanged;
-        public ThemeImplementation(IJSRuntime jSRuntime)
-        {
-            _jsBinder = new JSBinder(jSRuntime, "./_content/Yu-Core.BlazorToolkit/js/theme.js");
-        }
 
         [JSInvokable]
         public void NotifyChanged(bool value)
@@ -24,7 +20,13 @@ namespace BlazorToolkit.Essentials
             return dark ? AppTheme.Dark : AppTheme.Light;
         }
 
-        public async Task AddListent()
+        public async Task InitializeAsync(IJSRuntime jSRuntime)
+        {
+            _jsBinder = new JSBinder(jSRuntime, "./_content/Yu-Core.BlazorToolkit/js/theme.js");
+            await AddListentAsync();
+        }
+
+        private async Task AddListentAsync()
         {
             var dotNetCallbackRef = DotNetObjectReference.Create(this);
             var module = await _jsBinder.GetModule();

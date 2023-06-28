@@ -4,7 +4,7 @@ namespace BlazorToolkit.Essentials
 {
     public static class Browser
     {
-        static Lazy<IBrowser> defaultImplementation = default!;
+        static Lazy<IBrowser> defaultImplementation = new(new BrowserImplementation());
         public static IBrowser Default => defaultImplementation.Value;
 
         public static Task OpenAsync(string uri)
@@ -12,7 +12,7 @@ namespace BlazorToolkit.Essentials
 
         internal static void InitializeAsync(IJSRuntime jSRuntime)
         {
-            defaultImplementation = new(new BrowserImplementation(jSRuntime));
+            Default.Initialize(jSRuntime);
         }
     }
 }

@@ -4,7 +4,7 @@ namespace BlazorToolkit.Essentials
 {
     public static class Language
     {
-        static Lazy<ILanguage> defaultImplementation = default!;
+        static readonly Lazy<ILanguage> defaultImplementation = new(new LanguageImplementation());
         public static ILanguage Default => defaultImplementation.Value;
         public static event Action<string>? BrowserLanguageChanged;
 
@@ -13,9 +13,9 @@ namespace BlazorToolkit.Essentials
 
         internal static async Task InitializeAsync(IJSRuntime jSRuntime)
         {
-            defaultImplementation = new(new LanguageImplementation(jSRuntime));
+
+            await Default.InitializeAsync(jSRuntime);
             Default.BrowserLanguageChanged += NotifyChanged;
-            await Default.AddListent();
         }
 
         private static void NotifyChanged(string value)

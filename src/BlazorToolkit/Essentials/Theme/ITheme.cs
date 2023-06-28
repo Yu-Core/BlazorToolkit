@@ -1,9 +1,11 @@
-﻿namespace BlazorToolkit.Essentials
+﻿using Microsoft.JSInterop;
+
+namespace BlazorToolkit.Essentials
 {
     public interface ITheme
     {
         event Action<AppTheme>? SystemThemeChanged;
         Task<AppTheme> GetSystemThemeAsync();
-        Task AddListent();
+        internal Task InitializeAsync(IJSRuntime jSRuntime);
     }
 }

@@ -4,13 +4,8 @@ namespace BlazorToolkit.Essentials
 {
     public class LanguageImplementation : ILanguage
     {
-        private readonly JSBinder _jsBinder = default!;
+        private JSBinder _jsBinder = default!;
         public event Action<string>? BrowserLanguageChanged;
-
-        public LanguageImplementation(IJSRuntime jSRuntime)
-        {
-            _jsBinder = new JSBinder(jSRuntime, "./_content/Yu-Core.BlazorToolkit/js/language.js");
-        }
 
         [JSInvokable]
         public void NotifyChanged(string value)
@@ -24,7 +19,13 @@ namespace BlazorToolkit.Essentials
             return await module.InvokeAsync<string>("getBrowserLanguage", new object[] { });
         }
 
-        public async Task AddListent()
+        public async Task InitializeAsync(IJSRuntime jSRuntime)
+        {
+            _jsBinder = new JSBinder(jSRuntime, "./_content/Yu-Core.BlazorToolkit/js/language.js");
+            await AddListentAsync();
+        }
+
+        private async Task AddListentAsync()
         {
             var dotNetCallbackRef = DotNetObjectReference.Create(this);
             var module = await _jsBinder.GetModule();
