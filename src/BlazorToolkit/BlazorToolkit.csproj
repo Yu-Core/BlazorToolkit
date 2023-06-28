@@ -12,7 +12,6 @@
 		<RepositoryUrl>https://github.com/Yu-Core/BlazorToolkit</RepositoryUrl>
 		<PackageTags>Blazor;Toolkit</PackageTags>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-		<Version>1.0.13</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
